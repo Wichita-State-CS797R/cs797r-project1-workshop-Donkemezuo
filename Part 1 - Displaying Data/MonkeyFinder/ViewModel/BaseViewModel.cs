@@ -20,6 +20,8 @@ public class BaseViewModel : INotifyPropertyChanged
                 // sets new value to isBusy variable 
                 isBusy = value;
                 OnPropertyChanged(); // Notify view of property change
+                // Also raise the IsNotBusy property changed
+                OnPropertyChanged(nameof(IsNotBusy));
             }
 
         }
@@ -41,5 +43,9 @@ public class BaseViewModel : INotifyPropertyChanged
 
         }
     }
+
+
+    public bool IsNotBusy => !IsBusy;
+
 
 }
