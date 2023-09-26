@@ -1,7 +1,68 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MonkeyFinder.Model"
              x:Class="MonkeyFinder.View.MainPage">
+             <!-- xmlns:model=clr-namespace:MonkeyFinder.Model allows our program to reference the Monkey class for data binding purpose -->
 
-    
+        <!-- Setting up the collection view -->
+        <CollectionView>
+                <!-- Setting up the data source of the collection view-->
+                <CollectionView.ItemsSource>
+
+                    <!--Setting the static array of monkey objects as the item source of our collection view-->
+                    <x:Array Type="{x:Type model:Monkey}">
+                        <model:Monkey
+                            Name="Baboon"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Location="Africa and Asia" />
+
+                        <model:Monkey
+                            Name="Capuchin Monkey"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/capuchin.jpg"
+                            Location="Central and South America" />
+
+                        <model:Monkey
+                            Name="Red-shanked douc"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/douc.jpg"
+                            Location="Vietnam" />
+                    </x:Array>
+
+                </CollectionView.ItemsSource>
+
+                <!-- Collection view design -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Monkey">
+
+                        <!--Setting up an horizontal stack view to hold image view and label
+                        Spacing - the space between the items in the stack view
+                        -->
+                        <HorizontalStackLayout Padding="10" Spacing="10">
+
+                            <!--Setting up image view on the collection view-->
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="100"
+                                Source="{Binding Image}"
+                                WidthRequest="100" />
+
+                            <!--Setting up label on the collection view-->
+                            <Label VerticalOptions="Center" TextColor="Gray">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                        <Binding Path="Name"/>
+                                        <Binding Path="Location"/>
+                                    </MultiBinding>
+
+                                </Label.Text>
+
+                            </Label>
+
+                        </HorizontalStackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
 </ContentPage>
