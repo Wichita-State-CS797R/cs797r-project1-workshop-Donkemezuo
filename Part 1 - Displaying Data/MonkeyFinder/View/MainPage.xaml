@@ -97,12 +97,11 @@
                              <!--Setting up a vertical stack layout beside the image view-->
                             <VerticalStackLayout
                                 Grid.Column="1"
-                                VerticalOptions="Center"
+                                VerticalOptions="Center" Spacing="10"
                                 Padding="10">
                                  <!--Setting up the title labels -->
-                                <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
-                                <Label Style="{StaticResource MediumLabel}" Text="{Binding Latitude}" />
-
+                                <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}"/>
+                                <Label Style="{StaticResource MediumLabel}" Text="{Binding Location}"/>
                             </VerticalStackLayout>
                         </Grid>
 
@@ -113,6 +112,23 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
+
+        <!--Setting up get money button -->
+        <Button Text="Get Monkeys"
+                Command="{Binding GetMonkeysCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+        <!-- Setting up activity indicator -->
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsEnabled="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Color="{StaticResource Primary}"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
     </Grid>
 
 </ContentPage>
