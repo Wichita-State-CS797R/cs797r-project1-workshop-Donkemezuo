@@ -13,3 +13,6 @@ public class Monkey
     public double Latitude { get; set; }
     public double Longitude { get; set; }
 }
+
+[JsonSerializable(typeof(List<Monkey>))]
+internal sealed partial class MonkeyContext : JsonSerializerContext { }

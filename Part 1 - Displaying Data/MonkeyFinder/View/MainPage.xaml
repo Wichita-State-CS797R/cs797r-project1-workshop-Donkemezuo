@@ -1,16 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonkeyFinder.View.MainPage"
              xmlns:model="clr-namespace:MonkeyFinder.Model"
-             x:Class="MonkeyFinder.View.MainPage">
+             xmlns:viewmodel = "clr-namespace:MonkeyFinder.ViewModel"
+             x:DataType="viewmodel:MonkeysViewModel"
+             Title="{Binding Title}">
+              
              <!-- xmlns:model=clr-namespace:MonkeyFinder.Model allows our program to reference the Monkey class for data binding purpose -->
 
-        <!-- Setting up the collection view -->
+         <!--Setting up the collection view 
         <CollectionView>
-                <!-- Setting up the data source of the collection view-->
+                 Setting up the data source of the collection view
                 <CollectionView.ItemsSource>
 
-                    <!--Setting the static array of monkey objects as the item source of our collection view-->
+                    Setting the static array of monkey objects as the item source of our collection view
                     <x:Array Type="{x:Type model:Monkey}">
                         <model:Monkey
                             Name="Baboon"
@@ -30,23 +34,23 @@
 
                 </CollectionView.ItemsSource>
 
-                <!-- Collection view design -->
+                 Collection view design 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Monkey">
 
-                        <!--Setting up an horizontal stack view to hold image view and label
+                        Setting up an horizontal stack view to hold image view and label
                         Spacing - the space between the items in the stack view
-                        -->
+                        
                         <HorizontalStackLayout Padding="10" Spacing="10">
 
-                            <!--Setting up image view on the collection view-->
+                            Setting up image view on the collection view
                             <Image
                                 Aspect="AspectFill"
                                 HeightRequest="100"
                                 Source="{Binding Image}"
                                 WidthRequest="100" />
 
-                            <!--Setting up label on the collection view-->
+                            Setting up label on the collection view
                             <Label VerticalOptions="Center" TextColor="Gray">
                                 <Label.Text>
                                     <MultiBinding StringFormat="{}{0} | {1}">
@@ -63,6 +67,52 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
-            </CollectionView>
+            </CollectionView>-->
+
+    <!--Adding a grid-->
+
+    <Grid
+        ColumnDefinitions="*, *"
+        ColumnSpacing="5"
+        RowDefinitions="*, Auto"
+        RowSpacing="0">
+        <!--Adding a collection view to the grid layout -->
+        <CollectionView ItemsSource="{Binding Monkeys}"
+                        SelectionMode="None"
+                        Grid.ColumnSpan="2">
+            <!--Creating the collection view cell-->
+            <CollectionView.ItemTemplate>
+
+                <!--Setting the data type that this collection view cell takes in-->
+                <DataTemplate x:DataType="model:Monkey">
+
+                    <!--Setting the frame and size of the collection view cell-->
+                    <Frame HeightRequest="125" Style="{StaticResource CardView}">
+
+                        <Grid Padding="0" ColumnDefinitions="125,*">
+                            <!--Setting up the image view in the collection view cell-->
+                            <Image Aspect="AspectFill" Source="{Binding Image}"
+                                   WidthRequest="125"
+                                   HeightRequest="125"/>
+                             <!--Setting up a vertical stack layout beside the image view-->
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                Padding="10">
+                                 <!--Setting up the title labels -->
+                                <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
+                                <Label Style="{StaticResource MediumLabel}" Text="{Binding Latitude}" />
+
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </Frame>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
 
 </ContentPage>

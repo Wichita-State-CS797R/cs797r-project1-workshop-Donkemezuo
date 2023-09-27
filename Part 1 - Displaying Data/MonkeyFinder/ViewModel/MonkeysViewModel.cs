@@ -1,17 +1,27 @@
 ﻿using MonkeyFinder.Services;
+
 namespace MonkeyFinder.ViewModel;
 
 public partial class MonkeysViewModel : BaseViewModel
 {
     public ObservableCollection<Monkey> Monkeys { get; } = new();
+
+    // Creating a local instance of the monkey service class 
+    MonkeyService monkeyService; 
+
     public MonkeysViewModel(MonkeyService monkeyService) {
         Title = "Monkey Finder";
+
+        // Assigning the passed monkey service pass through dependency injection
         this.monkeyService = monkeyService;
     }
 
     // Performing data task
+    [RelayCommand]
     async Task GetMonkeysAsync() {
-        if (IsBusy) { return; }
+        if (IsBusy) {
+            return;
+        }
 
         try
         {
@@ -34,6 +44,4 @@ public partial class MonkeysViewModel : BaseViewModel
             IsBusy = false;
         }
     }
-
-
 }

@@ -1,12 +1,22 @@
-﻿using System.Net.Http.Headers; // This is to access the ReadFromJsonAsync method
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;// This is to access the ReadFromJsonAsync method
 
 namespace MonkeyFinder.Services;
 
 public class MonkeyService
 {
+
+    // Creating a new instance of HTTP client
+    HttpClient httpClient;
+    public MonkeyService()
+    {
+        this.httpClient = new HttpClient();
+    }
+
+
     // An array list of monkeys 
     List<Monkey> monkeyList = new();
+
+
 
     // Creates a new list of monkey's and return it 
     public async Task<List<Monkey>> GetMonkeys()
@@ -32,12 +42,7 @@ public class MonkeyService
 
 
 
-    // Creating a new instance of HTTP client
-    HttpClient httpClient;
-    public MonkeyService()
-    {
-        this.httpClient = new HttpClient();
-    }
+
 
 
 
