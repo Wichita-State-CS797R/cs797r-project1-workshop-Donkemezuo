@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MonkeyFinder.View;
+using MonkeyFinder.Services;  // Importing the monkey service class
 
 namespace MonkeyFinder;
 
@@ -19,8 +20,21 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddSingleton<MainPage>();
+        // Registering our main page with builder.Services
+        builder.Services.AddSingleton<MainPage>();
+		// Registering our MonkeyService and MonkeysViewModel with builder.Services
+		builder.Services.AddSingleton<MonkeyService>();
+		builder.Services.AddSingleton<MonkeysViewModel>();
 
-		return builder.Build();
+		// Registering the detail view and viewmodel
+		builder.Services.AddTransient<MonkeyDetailsViewModel>();
+		builder.Services.AddTransient<DetailsPage>();
+
+		// Registering the connectivity
+		builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
+        builder.Services.AddSingleton<IMap>(Map.Default);
+
+        return builder.Build();
 	}
 }
