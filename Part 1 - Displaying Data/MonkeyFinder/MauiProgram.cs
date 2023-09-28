@@ -30,6 +30,11 @@ public static class MauiProgram
 		builder.Services.AddTransient<MonkeyDetailsViewModel>();
 		builder.Services.AddTransient<DetailsPage>();
 
-		return builder.Build();
+		// Registering the connectivity
+		builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
+        builder.Services.AddSingleton<IMap>(Map.Default);
+
+        return builder.Build();
 	}
 }
