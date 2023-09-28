@@ -76,6 +76,7 @@ public partial class MonkeysViewModel : BaseViewModel
         }
         finally {
             IsBusy = false;
+            IsRefreshing = false;
         }
     }
 
@@ -91,4 +92,9 @@ public partial class MonkeysViewModel : BaseViewModel
             {"Monkey", monkey }
         });
     }
+
+    // Boolean property to check if the view is refreshing
+    [ObservableProperty]
+    bool isRefreshing;
+
 }
