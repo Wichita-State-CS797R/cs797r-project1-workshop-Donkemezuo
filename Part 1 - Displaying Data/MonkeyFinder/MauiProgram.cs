@@ -26,6 +26,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MonkeyService>();
 		builder.Services.AddSingleton<MonkeysViewModel>();
 
+		// Registering the detail view and viewmodel
+		builder.Services.AddTransient<MonkeyDetailsViewModel>();
+		builder.Services.AddTransient<DetailsPage>();
+
 		return builder.Build();
 	}
 }

@@ -44,4 +44,17 @@ public partial class MonkeysViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    // Perform segue to detail view
+    [RelayCommand]
+    async Task GoToDetails(Monkey monkey) {
+
+        // Checking to see if the monkey object is empty
+        if (monkey == null) { return; }
+
+        // We are passing a dictionary of key-value pairs to the details view.
+        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object> {
+            {"Monkey", monkey }
+        });
+    }
 }

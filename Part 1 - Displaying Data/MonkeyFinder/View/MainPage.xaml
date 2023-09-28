@@ -89,6 +89,14 @@
                     <!--Setting the frame and size of the collection view cell-->
                     <Frame HeightRequest="125" Style="{StaticResource CardView}">
 
+                        <!--Adding gesture recognizer to the frame of the collection view cell-->
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MonkeysViewModel}}, Path=GoToDetailsCommand}"
+                                CommandParameter="{Binding .}"/>
+
+                        </Frame.GestureRecognizers>
+
                         <Grid Padding="0" ColumnDefinitions="125,*">
                             <!--Setting up the image view in the collection view cell-->
                             <Image Aspect="AspectFill" Source="{Binding Image}"
