@@ -39,6 +39,13 @@
                    Text="{Binding Monkey.Name}"
                    HorizontalOptions="Center"
                    Margin="0,0,0,8"/>
+            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10" >
+
+                <Label Style="{StaticResource MediumLabel}" Text="{Binding Monkey.Details}"/>
+                <Label Style="{StaticResource SmallLabel}" Text="{Binding Monkey.Location}"/>
+                <Label Style="{StaticResource SmallLabel}" Text="{Binding Monkey.Population}"/>
+
+            </VerticalStackLayout>
 
         </Grid>
 
