@@ -1,5 +1,21 @@
 # .NET MAUI - Workshop
 
+## Completed Project
+
+## Light Mode - Main Page 
+
+![Simulator Screenshot - iPhone 15 Pro Max - 2023-09-28 at 01 14 42](https://github.com/Wichita-State-CS797R/cs797r-project1-workshop-Donkemezuo/assets/43887215/3806b21c-36a2-4cd1-8ba5-cc681ff3adab)
+
+## Light Mode - Details Page
+![Simulator Screenshot - iPhone 15 Pro Max - 2023-09-28 at 01 14 45](https://github.com/Wichita-State-CS797R/cs797r-project1-workshop-Donkemezuo/assets/43887215/4da63cd0-d3aa-4d56-b918-d7ea6cd2f3ef)
+
+## Dark Mode - Main Page 
+![Simulator Screenshot - iPhone 15 Pro Max - 2023-09-28 at 01 14 27](https://github.com/Wichita-State-CS797R/cs797r-project1-workshop-Donkemezuo/assets/43887215/1d7b5b2c-87ab-44ca-a663-904373ad6e2c)
+
+## Dark Mode - Details Page
+![Simulator Screenshot - iPhone 15 Pro Max - 2023-09-28 at 01 14 33](https://github.com/Wichita-State-CS797R/cs797r-project1-workshop-Donkemezuo/assets/43887215/4ca9c2e2-53f8-4540-a1a7-d64dfb8c6cf4)
+
+
 Today we will build a [.NET MAUI](https://docs.microsoft.com/dotnet/maui?WT.mc_id=friends-mauiworkshop-jamont) application that will display a list of Monkeys from around the world. We will start by building the business logic backend that pulls down json-encoded data from a RESTful endpoint. We will then leverage [.NET MAUI](https://docs.microsoft.com/xamarin/essentials/index?WT.mc_id=friends-mauiworkshop-jamont) to find the closest monkey to us and also show the monkey on a map. We will also see how to display data in many different ways and then finally fully theme the application.
 
 ## Languages
